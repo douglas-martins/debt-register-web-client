@@ -32,18 +32,16 @@ export class MenuComponent implements OnInit {
     this.menuItems = new Array<MenuItemModel>();
     this.menuItems.push(new class implements MenuItemModel {
       description: string;
-      icon: string = '';
+      icon: string = 'far fa-plus-square';
       link: string = '';
       name: string = 'Create Debt';
-      title: string;
     });
 
     this.menuItems.push(new class implements MenuItemModel {
       description: string;
-      icon: string = '';
+      icon: string = 'far fa-list-alt';
       link: string = '';
       name: string = 'List Client Debts';
-      title: string;
     })
   }
 

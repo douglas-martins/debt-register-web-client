@@ -5,6 +5,5 @@ export interface MenuItemModel {
   name?: string;
   icon?: string;
   link?: string;
-  title?: string;
   description?: string;
 }
