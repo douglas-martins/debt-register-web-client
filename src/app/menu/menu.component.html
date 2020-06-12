@@ -1,0 +1,15 @@
+<!--MAIN-->
+<aside class="is-medium menu">
+  <p class="menu-label">
+    Actions
+  </p>
+  <ul class="menu-list">
+    <li>
+      <div *ngFor="let item of menuItems">
+        <a><i class="{{item.icon}}"></i> {{item.title}}</a>
+        <a [routerLink]="item.link">{{item.name}}</a>
+      </div>
+    </li>
+  </ul>
+</aside>
+<!--MAIN-->
