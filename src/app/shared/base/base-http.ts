@@ -1,4 +1,4 @@
-import {HttpClient, HttpHandler, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHandler, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BaseMock} from './base-mock';
@@ -70,26 +70,6 @@ export class BaseHttp<U extends BaseData> extends HttpClient {
         observer.next(this.mock.updateItem(body));
       });
     }
-  }
-
-  /**
-   * Head service function
-   * @param url: string with entity that will head.
-   * @param options: any with the values of options for the request.
-   * @return: Observable<T> with the observable for the this request.
-   */
-  public head<T extends BaseData>(url: string, options?: any): Observable<T> {
-    return null;
-  }
-
-  /**
-   * Options service function
-   * @param url: string with entity that will options.
-   * @param options: any with the values of options for the request.
-   * @return: Observable<T> with the observable for the this request.
-   */
-  public options<T extends BaseData>(url: string, options?: any): Observable<T> {
-    return null;
   }
 
   /**

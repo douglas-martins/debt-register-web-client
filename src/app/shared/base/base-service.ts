@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {BaseHttp} from './base-http';
 import {BaseMock} from './base-mock';
 import {Observable} from 'rxjs';
@@ -29,7 +29,7 @@ export class BaseService<T extends BaseData> {
    */
   constructor(
     protected http: BaseHttp<T>,
-    private _endpoint: string
+    @Inject(String) private _endpoint: string
   ) {
     this.url = _endpoint.length === 0 ? environment.userUrl : environment.apiUrl;
     this.mock = null;

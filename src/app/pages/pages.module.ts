@@ -6,6 +6,9 @@ import {ViewDebtComponent} from './debt/view-debt/view-debt.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LayoutModule} from "../layout/layout.module";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {DebtService} from "../shared/services/debt.service";
+import {ToastrService} from "ngx-toastr";
+import {NgxCurrencyModule} from "ngx-currency";
 
 
 @NgModule({
@@ -19,7 +22,12 @@ import {NgSelectModule} from "@ng-select/ng-select";
     ReactiveFormsModule,
     LayoutModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    NgxCurrencyModule
+  ],
+  providers: [
+    DebtService,
+    ToastrService
   ],
   exports: [
     DebtComponent,

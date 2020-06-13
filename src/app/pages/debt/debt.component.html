@@ -2,76 +2,60 @@
 <app-content>
   <!--PAGE INFORMATION-->
   <div class="card-title">{{menuItemView.title}}</div>
-  <div class="card-subtitle">{{'Add' + menuItemView.description}}</div>
+  <div class="card-subtitle">{{menuItemView.description}}</div>
   <div class="card-icon">{{menuItemView.icon}}</div>
   <!--PAGE INFORMATION-->
 
   <!--FORM CONTENT-->
   <div class="content">
     <form [formGroup]="debtForm" (submit)="save()">
-<!--      <div class="field">-->
-<!--        <label class="label">Name</label>-->
-<!--        <div class="control">-->
-<!--          <input class="input" type="text" [(ngModel)]="aidInstitution.name" formControlName="name"-->
-<!--                 placeholder="Ex.: Cancer Institution">-->
-<!--        </div>-->
-<!--      </div>-->
-
       <!--USER SELECT INPUT-->
       <div class="field">
-        <label for="user" class="label">User</label>
+        <label for="user" class="label">User*</label>
         <div class="control">
-          <ng-select id="user" [(ngModel)]="debt.userId"></ng-select>
+          <ng-select id="user" class="input" [ngClass]="{'is-danger': getUserHasErrors}" bindLabel="username"
+                     bindValue="id" [(ngModel)]="debt.userId" formControlName="user" [items]="users$ | async"
+          >
+          </ng-select>
+          <p *ngIf="getUserHasErrors" class="help is-danger">User is required</p>
         </div>
       </div>
       <!--USER SELECT INPUT-->
 
       <!--REASON INPUT-->
       <div class="field">
-        <label for="reason" class="label">Reason</label>
+        <label for="reason" class="label">Reason*</label>
         <div class="control">
           <input id="reason" class="input" type="text" [(ngModel)]="debt.reason" formControlName="reason"
-                 placeholder="Ex.: Buy Playstation 5">
+                 [ngClass]="{'is-danger': getReasonHasErrors}" placeholder="Ex.: Buy Playstation 5">
+          <p *ngIf="getReasonHasErrors" class="help is-danger">Reason is required</p>
         </div>
       </div>
       <!--REASON INPUT-->
 
       <!--PRICE INPUT-->
       <div class="field">
-        <label for="price" class="label">Price</label>
+        <label for="price" class="label">Price*</label>
         <div class="control">
-          <input id="price" class="input" type="number" [(ngModel)]="debt.price" formControlName="price"
-                 placeholder="Ex.: $ 299.90">
+          <input currencyMask id="price" class="input" placeholder="Ex.: $ 299.90"
+                 [(ngModel)]="debt.price" formControlName="price"
+                 [options]="{prefix: '$ ', thousands: ',', decimal: '.', align: 'left'}"
+                 [ngClass]="{'is-danger': getPriceHasErrors}">
+          <p *ngIf="getPriceHasErrors" class="help is-danger">Price is required</p>
         </div>
       </div>
       <!--PRICE INPUT-->
 
       <!--DATE INPUT-->
       <div class="field">
-        <label for="date" class="label">Date</label>
+        <label for="date" class="label">Date*</label>
         <div class="control">
-          <input id="date" class="input" type="date" [(ngModel)]="debt.price" formControlName="price"
-                 placeholder="Ex.:https://institution.com/">
+          <input id="date" class="input" type="date" [(ngModel)]="debt.debtDate" formControlName="debtDate"
+                 [ngClass]="{'is-danger': getDebtDateHasErrors}">
+          <p *ngIf="getDebtDateHasErrors" class="help is-danger">Date is required</p>
         </div>
       </div>
       <!--DATE INPUT-->
-
-<!--      <br>-->
-<!--      <label class="label">Contact</label>-->
-<!--      <br>-->
-<!--      <div class="field is-grouped">-->
-<!--        <div class="control">-->
-<!--          <label class="label">Telephone</label>-->
-<!--          <input class="input" type="text" mask="+00 (00) 000-0000" formControlName="telephone"-->
-<!--                 [(ngModel)]="aidInstitution.contact.telephone" placeholder="Ex.: +55 (99) 999-9999">-->
-<!--        </div>-->
-<!--        <div class="control">-->
-<!--          <label class="label">E-mail</label>-->
-<!--          <input class="input" type="text" formControlName="email"-->
-<!--                 [(ngModel)]="aidInstitution.contact.email" placeholder="Ex.: test@email.com">-->
-<!--        </div>-->
-<!--      </div>-->
-
 
       <!--SUBMIT BUTTON-->
       <div class="field is-grouped">

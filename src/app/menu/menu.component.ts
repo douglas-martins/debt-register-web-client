@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItemModel} from "../shared/models/menu-item.model";
 import {MenuItemViewModel} from "../shared/models/menu-item-view.model";
 
@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
     this.menuItems = new Array<MenuItemModel>();
     this.menuItems.push(new class implements MenuItemModel {
       icon: string = 'far fa-plus-square';
-      link: string = '';
+      link: string = 'debt';
       name: string = 'Create Debt';
       view: MenuItemViewModel = new class implements MenuItemViewModel {
         description: string = 'Create or edit a Debt data';
@@ -44,7 +44,7 @@ export class MenuComponent implements OnInit {
 
     this.menuItems.push(new class implements MenuItemModel {
       icon: string = 'far fa-list-alt';
-      link: string = '';
+      link: string = 'debts';
       name: string = 'List Client Debts';
       view: MenuItemViewModel = new class implements MenuItemViewModel {
         description: string = 'View, edit or delete a Debt data form this table';

@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {MenuComponent} from "./menu/menu.component";
+import {RouterModule, Routes} from '@angular/router';
 import {DebtComponent} from "./pages/debt/debt.component";
 import {ListDebtsComponent} from "./pages/debt/list-debts/list-debts.component";
+import {MainComponent} from "./main/main.component";
 
 
 const routes: Routes = [
-  {path: '/', component: MenuComponent},
-  {path: '/debt', component: DebtComponent},
-  {path: '/debt/:id', component: DebtComponent},
-  {path: '/debts', component: ListDebtsComponent}
+  {path: '', component: MainComponent},
+  {path: 'debt', component: DebtComponent},
+  {path: 'debt/:id', component: DebtComponent},
+  {path: 'debts', component: ListDebtsComponent}
 ];
 
 @NgModule({
