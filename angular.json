@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "debt-register-web-client"
+    }
+  },
+  "defaultProject": "debt-register-web-client",
+  "cli": {
+    "analytics": "6e463a76-31fe-47eb-8c36-05cf2120bf8c"
+  }
 }

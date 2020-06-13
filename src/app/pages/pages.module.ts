@@ -1,8 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DebtComponent} from './debt/debt.component';
-import {ListDebtsComponent} from './list-debts/list-debts.component';
-import {ViewDebtComponent} from './view-debt/view-debt.component';
+import {ListDebtsComponent} from './debt/list-debts/list-debts.component';
+import {ViewDebtComponent} from './debt/view-debt/view-debt.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LayoutModule} from "../layout/layout.module";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -12,7 +15,11 @@ import {ViewDebtComponent} from './view-debt/view-debt.component';
     ViewDebtComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    NgSelectModule,
+    FormsModule
   ],
   exports: [
     DebtComponent,

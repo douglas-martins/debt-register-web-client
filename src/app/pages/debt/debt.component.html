@@ -1,1 +1,87 @@
-<p>debt works!</p>
+<!--PAGE CONTENT-->
+<app-content>
+  <!--PAGE INFORMATION-->
+  <div class="card-title">{{menuItemView.title}}</div>
+  <div class="card-subtitle">{{'Add' + menuItemView.description}}</div>
+  <div class="card-icon">{{menuItemView.icon}}</div>
+  <!--PAGE INFORMATION-->
+
+  <!--FORM CONTENT-->
+  <div class="content">
+    <form [formGroup]="debtForm" (submit)="save()">
+<!--      <div class="field">-->
+<!--        <label class="label">Name</label>-->
+<!--        <div class="control">-->
+<!--          <input class="input" type="text" [(ngModel)]="aidInstitution.name" formControlName="name"-->
+<!--                 placeholder="Ex.: Cancer Institution">-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!--USER SELECT INPUT-->
+      <div class="field">
+        <label for="user" class="label">User</label>
+        <div class="control">
+          <ng-select id="user" [(ngModel)]="debt.userId"></ng-select>
+        </div>
+      </div>
+      <!--USER SELECT INPUT-->
+
+      <!--REASON INPUT-->
+      <div class="field">
+        <label for="reason" class="label">Reason</label>
+        <div class="control">
+          <input id="reason" class="input" type="text" [(ngModel)]="debt.reason" formControlName="reason"
+                 placeholder="Ex.: Buy Playstation 5">
+        </div>
+      </div>
+      <!--REASON INPUT-->
+
+      <!--PRICE INPUT-->
+      <div class="field">
+        <label for="price" class="label">Price</label>
+        <div class="control">
+          <input id="price" class="input" type="number" [(ngModel)]="debt.price" formControlName="price"
+                 placeholder="Ex.: $ 299.90">
+        </div>
+      </div>
+      <!--PRICE INPUT-->
+
+      <!--DATE INPUT-->
+      <div class="field">
+        <label for="date" class="label">Date</label>
+        <div class="control">
+          <input id="date" class="input" type="date" [(ngModel)]="debt.price" formControlName="price"
+                 placeholder="Ex.:https://institution.com/">
+        </div>
+      </div>
+      <!--DATE INPUT-->
+
+<!--      <br>-->
+<!--      <label class="label">Contact</label>-->
+<!--      <br>-->
+<!--      <div class="field is-grouped">-->
+<!--        <div class="control">-->
+<!--          <label class="label">Telephone</label>-->
+<!--          <input class="input" type="text" mask="+00 (00) 000-0000" formControlName="telephone"-->
+<!--                 [(ngModel)]="aidInstitution.contact.telephone" placeholder="Ex.: +55 (99) 999-9999">-->
+<!--        </div>-->
+<!--        <div class="control">-->
+<!--          <label class="label">E-mail</label>-->
+<!--          <input class="input" type="text" formControlName="email"-->
+<!--                 [(ngModel)]="aidInstitution.contact.email" placeholder="Ex.: test@email.com">-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+      <!--SUBMIT BUTTON-->
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+      </div>
+      <!--SUBMIT BUTTON-->
+    </form>
+  </div>
+  <!--FORM CONTENT-->
+</app-content>
+<!--PAGE CONTENT-->
