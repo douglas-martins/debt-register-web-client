@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DebtComponent} from './debt/debt.component';
 import {ListDebtsComponent} from './debt/list-debts/list-debts.component';
-import {ViewDebtComponent} from './debt/view-debt/view-debt.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LayoutModule} from "../layout/layout.module";
 import {NgSelectModule} from "@ng-select/ng-select";
@@ -14,8 +13,7 @@ import {NgxCurrencyModule} from "ngx-currency";
 @NgModule({
   declarations: [
     DebtComponent,
-    ListDebtsComponent,
-    ViewDebtComponent
+    ListDebtsComponent
   ],
   imports: [
     CommonModule,
@@ -31,8 +29,7 @@ import {NgxCurrencyModule} from "ngx-currency";
   ],
   exports: [
     DebtComponent,
-    ListDebtsComponent,
-    ViewDebtComponent
+    ListDebtsComponent
   ]
 })
 export class PagesModule { }
