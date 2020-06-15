@@ -9,11 +9,10 @@
     <div class="field">
       <label for="user" class="label">Select User</label>
       <div class="control">
-        <ng-select id="user" class="input" bindLabel="username" (ngModelChange)="getUserDebts($event)"
-                   [(ngModel)]="userSelected"  [items]="users$ | async"
+        <ng-select id="user" bindLabel="username" (ngModelChange)="getUserDebts($event)"
+                   [(ngModel)]="userSelected" [items]="users$ | async"
         >
         </ng-select>
-<!--        <p *ngIf="getUserHasErrors" class="help is-danger">User is required</p>-->
       </div>
     </div>
     <!--USER SELECT INPUT-->
@@ -24,7 +23,7 @@
       <!--TABLE LABELS-->
       <tr>
         <th *ngFor="let key of keys">{{key}}</th>
-        <th>actions</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <!--TABLE LABELS-->
@@ -32,7 +31,6 @@
       <!--TABLE ROWS OF CONTENT-->
       <tbody>
       <tr *ngFor="let debt of debts">
-<!--        <th>{{userSelected.name}}</th>-->
         <th>{{userSelected.name}}</th>
         <th>{{debt.reason}}</th>
         <th currencyMask [options]="{prefix: '$ ', thousands: ',', decimal: '.', align: 'left'}">{{debt.price}}</th>
@@ -40,7 +38,6 @@
         <th style="text-align: center;">
           <div class="field is-grouped">
             <div class="control">
-<!--              <button (click)="viewDebt(debt)" class="button is-small is-link">View</button>-->
               <button (click)="editDebt(debt)" class="button is-small is-link">Edit</button>
               <button (click)="removeDebt(debt._id)" class="button is-small is-danger">Remove</button>
             </div>

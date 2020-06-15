@@ -13,7 +13,7 @@
       <div class="field">
         <label for="user" class="label">User*</label>
         <div class="control">
-          <ng-select id="user" class="input" [ngClass]="{'is-danger': getUserHasErrors}" bindLabel="username"
+          <ng-select id="user" [ngClass]="{'is-danger': getUserHasErrors}" bindLabel="username"
                      bindValue="id" [(ngModel)]="debt.userId" formControlName="userId" [items]="users$ | async"
           >
           </ng-select>
