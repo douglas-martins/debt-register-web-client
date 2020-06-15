@@ -14,7 +14,7 @@
         <label for="user" class="label">User*</label>
         <div class="control">
           <ng-select id="user" class="input" [ngClass]="{'is-danger': getUserHasErrors}" bindLabel="username"
-                     bindValue="id" [(ngModel)]="debt.userId" formControlName="user" [items]="users$ | async"
+                     bindValue="id" [(ngModel)]="debt.userId" formControlName="userId" [items]="users$ | async"
           >
           </ng-select>
           <p *ngIf="getUserHasErrors" class="help is-danger">User is required</p>

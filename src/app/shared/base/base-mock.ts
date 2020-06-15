@@ -72,20 +72,20 @@ export class BaseMock<T extends BaseData> {
 
   /**
    * Find the mock by the id generated for him.
-   * @param id: number with the id for the mock.
+   * @param id: number | string with the id for the mock.
    * @return: BaseData with the reference for the item.
    */
-  public findById(id: number): T {
+  public findById(id: number | string): T {
     const item = this.itemsMock.find((res) => res['id'] === id);
     return Object.assign({}, item);
   }
 
   /**
    * Delete a item on the mocks array,
-   * @param id: number with the index of the item that will be deleted.
+   * @param id: number | string with the index of the item that will be deleted.
    * @return: BaseData with the value of the object that was deleted.
    */
-  public delete(id: number): T {
+  public delete(id: number | string): T {
     let aux = null;
     let pos = -1;
 

@@ -9,7 +9,7 @@ import {BaseHttp} from "../base/base-http";
 export class DebtService extends BaseService<DebtModel> {
 
   /**
-   * Deault class constructor
+   * Default class constructor
    * @param http
    */
   constructor(

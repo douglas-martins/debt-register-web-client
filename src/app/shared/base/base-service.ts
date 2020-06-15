@@ -43,6 +43,12 @@ export class BaseService<T extends BaseData> {
    */
   set setCustomEndpoint(customEndpoint: string) {
     this.customEndpoint = customEndpoint;
+
+    this.endpoint = this._endpoint;
+
+    if (this.customEndpoint) {
+      this.endpoint = this.endpoint + '/' + this.customEndpoint;
+    }
   }
 
   /**
@@ -70,32 +76,6 @@ export class BaseService<T extends BaseData> {
   }
 
   /**
-   * Set the custom options for this service
-   * @param custom: object with options for the custom url
-   */
-  public setServiceCustomUrl(custom: {withUserId: boolean, id: string}): void {
-    if (!this.customEndpoint) {
-      throw Error('customEndpoint has to be a valid value for the service work');
-    }
-    if (custom.withUserId) {
-      this.setUserIdOnServiceUrl(custom.id);
-      this.endpoint += '/' + this.customEndpoint;
-    } else {
-      this.endpoint = this._endpoint;
-      this.endpoint = this.endpoint + '/' + this.customEndpoint;
-    }
-  }
-
-  /**
-   * Set user id as parameter on the service url.
-   * @param: id: user id reference
-   */
-  public setUserIdOnServiceUrl(id: string): void {
-    this.endpoint = this._endpoint;
-    this.endpoint = id + this.endpoint;
-  }
-
-  /**
    * Create a new item data on the db.
    * @param data: T with the data that will be inserted.
    * @return: Observable<T> with the response for the request.
@@ -107,18 +87,19 @@ export class BaseService<T extends BaseData> {
   /**
    * Patch a item data on db.
    * @param data: T with the data that will be patched.
+   * @param id: string
    * @return: Observable<T> with the response for the request.
    */
-  public update(data: T): Observable<T> {
-    return this.http.patch<T>(this.getUrl() + '/' + data['id'], data, {observe: 'response'});
+  public update(data: T, id: string): Observable<T> {
+    return this.http.put<T>(this.getUrl() + '/' + id, data, {observe: 'response'});
   }
 
   /**
    * Find a item with the same id passed.
-   * @param id: number with the value of id for the store item data.
+   * @param id: number | string with the value of id for the store item data.
    * @return: Observable<T> with the response for the request.
    */
-  public find(id: number): Observable<T> {
+  public find(id: number | string): Observable<T | Array<T>> {
     return this.http.get<T>(this.getUrl() + '/' + id, {observe: 'response'}, id);
   }
 
@@ -132,10 +113,10 @@ export class BaseService<T extends BaseData> {
 
   /**
    * Delete the item from db.
-   * @param id: number with value for the id of element that will be deleted.
+   * @param id: number | string with value for the id of element that will be deleted.
    * @return: Observable<T> with the response for the request.
    */
-  public delete(id: number): Observable<T> {
+  public delete(id: number | string): Observable<T> {
     return this.http.delete<T>(this.getUrl() + '/' + id, {observe: 'response'}, id);
   }
 

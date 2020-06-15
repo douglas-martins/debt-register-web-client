@@ -36,10 +36,10 @@ export class BaseHttp<U extends BaseData> extends HttpClient {
    * Delete service function.
    * @param url: string with entity that will deleted.
    * @param options: any with the values of options for the request.
-   * @param id: number with the value of entity id.
+   * @param id: number | string with the value of entity id.
    * @return: Observable<T | U> with the observable for the this request.
    */
-  public delete<T extends BaseData>(url: string, options?: any, id: number = -1): Observable<T | U> {
+  public delete<T extends BaseData>(url: string, options?: any, id: number | string = -1): Observable<T | U> {
     if (!this.mock) {
       return super.delete<T>(url, options).pipe(map(
         (response: HttpResponse<T>) => {
@@ -76,10 +76,10 @@ export class BaseHttp<U extends BaseData> extends HttpClient {
    * Get service function.
    * @param url: string with entity that will get.
    * @param options: any with the values of options for the request.
-   * @param id: number with the value of entity id.
+   * @param id: number | string with the value of entity id.
    * @return: Observable<T | U> with the observable for the this request.
    */
-  public get<T extends BaseData>(url: string, options?: any, id: number = -1): Observable<T | U> {
+  public get<T extends BaseData>(url: string, options?: any, id: number | string = -1): Observable<T | Array<T> | U | Array<U>> {
     if (!this.mock) {
       return super.get<T>(url, options).pipe(map(
         (response: HttpResponse<T>) => {
