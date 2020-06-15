@@ -94,12 +94,11 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
   }
 
   /**
-   *
-   * @param user
+   * Get user debts.
+   * @param user: UserModel | number
    */
   public getUserDebts(user: UserModel | number): void {
     const id: number = typeof user === "number" ? user : user.id;
-    // /all/:userId
     this.debtService.setCustomEndpoint = 'all';
     this.debtService.find(id).toPromise().then((data) => {
       this.debts = data;

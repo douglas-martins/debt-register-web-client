@@ -15,6 +15,7 @@ export abstract class DebtCommons implements OnInit {
   /** Reference for the observable  */
   users$: Observable<UserModel[]>;
 
+  /** Reference for the users on system */
   users: Array<UserModel>;
 
   /** Reference for the debt id */
@@ -43,6 +44,10 @@ export abstract class DebtCommons implements OnInit {
     this.users$ = this.userService.findAll();
   }
 
+  /**
+   * Get users from url
+   * @return: Promise<Array<UserModel>>
+   */
   public async getUsers(): Promise<Array<UserModel>> {
     return await new Promise<Array<UserModel>>(async (resolve) => {
       await this.users$.toPromise().then(async (data) => {
