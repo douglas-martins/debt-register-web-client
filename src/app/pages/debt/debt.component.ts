@@ -1,13 +1,13 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ToastrService} from "ngx-toastr";
-import {DebtService} from "../../shared/services/debt.service";
-import {DebtModel} from "../../shared/models/debt.model";
-import {MenuItemViewModel} from "../../shared/models/menu-item-view.model";
-import {UserService} from "../../shared/services/user.service";
-import {DebtCommons} from "./debt-commons/debt-commons";
-import {UserModel} from "../../shared/models/user.model";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+import {DebtService} from '../../shared/services/debt.service';
+import {DebtModel} from '../../shared/models/debt.model';
+import {MenuItemViewModel} from '../../shared/models/menu-item-view.model';
+import {UserService} from '../../shared/services/user.service';
+import {DebtCommons} from './debt-commons/debt-commons';
+import {UserModel} from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-debt',
@@ -24,12 +24,12 @@ export class DebtComponent extends DebtCommons implements OnInit, AfterContentIn
 
   /**
    * Default class constructor
-   * @param route
-   * @param router
-   * @param formBuilder
-   * @param toastrService
-   * @param userService
-   * @param debtService
+   * @param route angular default ActivatedRoute reference
+   * @param router angular default Router reference
+   * @param formBuilder angular default FormBuilder
+   * @param toastrService service reference from the lib ngx-toastr
+   * @param userService UserService reference
+   * @param debtService DebtService reference
    */
   constructor(
     protected route: ActivatedRoute,
@@ -40,9 +40,9 @@ export class DebtComponent extends DebtCommons implements OnInit, AfterContentIn
     private debtService: DebtService
   ) {
     super(route, userService, new class implements MenuItemViewModel {
-      description: string = 'Create or edit a Debt data';
-      icon: string = '';
-      title: string = 'Debt';
+      description = 'Create or edit a Debt data';
+      icon = '';
+      title = 'Debt';
     });
   }
 
@@ -124,7 +124,7 @@ export class DebtComponent extends DebtCommons implements OnInit, AfterContentIn
       debtDate: Date = null;
       price: number = null;
       reason: string = null;
-      userId: number = 1;
+      userId = 1;
     };
   }
 
@@ -194,18 +194,18 @@ export class DebtComponent extends DebtCommons implements OnInit, AfterContentIn
     if (this.debtId) {
       this.debtService.update(this.debt, this.debtId).toPromise().then((data) => {
         this.toastrService.success('Save the information', 'Success', {timeOut: 3000});
-        this.router.navigateByUrl('debts/' + data.userId, {state:{_id: data._id, userId: data.userId}});
+        this.router.navigateByUrl('debts/' + data.userId, {state: {_id: data._id, userId: data.userId}});
       }).catch((error) => {
         console.log(error);
-        this.toastrService.error('The application has a problem to update this form. Please contact the support or try again.' ,'Error On Save', {timeOut: 3000});
+        this.toastrService.error('The application has a problem to update this form. Please contact the support or try again.' , 'Error On Save', {timeOut: 3000});
       });
     } else {
       this.debtService.create(this.debt).toPromise().then((data) => {
         this.toastrService.success('Save the information', 'Success', {timeOut: 3000});
-        this.router.navigateByUrl('debts/' + data.userId, {state:{_id: data._id, userId: data.userId}});
+        this.router.navigateByUrl('debts/' + data.userId, {state: {_id: data._id, userId: data.userId}});
       }).catch((error) => {
         console.log(error);
-        this.toastrService.error('The application has a problem to save this form. Please contact the support or try again.' ,'Error On Save', {timeOut: 3000});
+        this.toastrService.error('The application has a problem to save this form. Please contact the support or try again.' , 'Error On Save', {timeOut: 3000});
       });
     }
   }
@@ -216,7 +216,7 @@ export class DebtComponent extends DebtCommons implements OnInit, AfterContentIn
   private populateForm(): void {
     if (this.debt) {
       const $this = this;
-      const user: UserModel = this.users.find(user => user.id === this.debt.userId);
+      const user: UserModel = this.users.find(u => u.id === this.debt.userId);
       this.debt = new class implements DebtModel {
         debtDate: Date = $this.debt.debtDate;
         price: number = $this.debt.price;

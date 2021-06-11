@@ -1,6 +1,6 @@
-import {CompanyModel} from "./company.model";
-import {BaseData} from "../base/base-data";
-import {AddressModel} from "./address.model";
+import {CompanyModel} from './company.model';
+import {BaseData} from '../base/base-data';
+import {AddressModel} from './address.model';
 
 /**
  * Interface for map the user object in system

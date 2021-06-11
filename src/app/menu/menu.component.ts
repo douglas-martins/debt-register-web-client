@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuItemModel} from "../shared/models/menu-item.model";
-import {MenuItemViewModel} from "../shared/models/menu-item-view.model";
+import {MenuItemModel} from '../shared/models/menu-item.model';
+import {MenuItemViewModel} from '../shared/models/menu-item-view.model';
 
 @Component({
   selector: 'app-menu',
@@ -27,29 +27,29 @@ export class MenuComponent implements OnInit {
   }
 
   /**
-   * Init the items the menu have
+   * Init the date for menu items
    */
   private initMenuItems(): void {
     this.menuItems = new Array<MenuItemModel>();
     this.menuItems.push(new class implements MenuItemModel {
-      icon: string = 'far fa-plus-square';
-      link: string = 'debt';
-      name: string = 'Create Debt';
+      icon = 'far fa-plus-square';
+      link = 'debt';
+      name = 'Create Debt';
       view: MenuItemViewModel = new class implements MenuItemViewModel {
-        description: string = 'Create or edit a Debt data';
-        icon: string = '';
-        title: string = 'Debt';
+        description = 'Create or edit a Debt data';
+        icon = '';
+        title = 'Debt';
       };
     });
 
     this.menuItems.push(new class implements MenuItemModel {
-      icon: string = 'far fa-list-alt';
-      link: string = 'debts';
-      name: string = 'List Client Debts';
+      icon = 'far fa-list-alt';
+      link = 'debts';
+      name = 'List Client Debts';
       view: MenuItemViewModel = new class implements MenuItemViewModel {
-        description: string = 'View, edit or delete a Debt data form this table';
-        icon: string = '';
-        title: string = 'Debts';
+        description = 'View, edit or delete a Debt data form this table';
+        icon = '';
+        title = 'Debts';
       };
     });
   }

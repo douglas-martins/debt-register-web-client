@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BaseMock} from './base-mock';
 import {map} from 'rxjs/operators';
-import {BaseData} from "./base-data";
+import {BaseData} from './base-data';
 
 
 /**
@@ -11,7 +11,7 @@ import {BaseData} from "./base-data";
  */
 @Injectable()
 export class BaseHttp<U extends BaseData> extends HttpClient {
-  /** Ref for the mock **/
+  /** Ref for the mock */
   private mock: BaseMock<U>;
 
   /**

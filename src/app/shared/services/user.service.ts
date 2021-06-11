@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BaseService} from "../base/base-service";
-import {UserModel} from "../models/user.model";
-import {BaseHttp} from "../base/base-http";
-import {Observable} from "rxjs";
+import {BaseService} from '../base/base-service';
+import {UserModel} from '../models/user.model';
+import {BaseHttp} from '../base/base-http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,12 @@ export class UserService extends BaseService<UserModel>{
 
   /**
    * Default class constructor
-   * @param http
+   * @param http BaseHttp class reference
    */
   constructor(
     protected http: BaseHttp<UserModel>
   ) {
-    super(http, '')
+    super(http, '');
   }
 
   /**

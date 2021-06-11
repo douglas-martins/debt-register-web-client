@@ -1,10 +1,10 @@
 /**
  * A base class for mock some models on this system.
  */
-import {BaseData} from "./base-data";
+import {BaseData} from './base-data';
 
 export class BaseMock<T extends BaseData> {
-  /** Ref for the array with the object for the mocks **/
+  /** Ref for the array with the object for the mocks */
   private itemsMock: Array<T>;
 
   /**

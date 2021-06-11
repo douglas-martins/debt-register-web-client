@@ -1,5 +1,5 @@
-import {BaseData} from "../base/base-data";
-import {UserModel} from "./user.model";
+import {BaseData} from '../base/base-data';
+import {UserModel} from './user.model';
 
 /**
  * Interface for map the debt object in system

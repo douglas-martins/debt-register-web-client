@@ -1,9 +1,9 @@
-import {MenuItemViewModel} from "../../../shared/models/menu-item-view.model";
-import {Observable} from "rxjs";
-import {UserModel} from "../../../shared/models/user.model";
-import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../../shared/services/user.service";
-import {OnInit} from "@angular/core";
+import {MenuItemViewModel} from '../../../shared/models/menu-item-view.model';
+import {Observable} from 'rxjs';
+import {UserModel} from '../../../shared/models/user.model';
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../../shared/services/user.service';
+import {OnInit} from '@angular/core';
 
 /**
  * Abstract class fro group the Debt commons actions and properties
@@ -23,17 +23,17 @@ export abstract class DebtCommons implements OnInit {
 
   /**
    * Default class constructor
-   * @param route
-   * @param userService
-   * @param _menuItemView
+   * @param route angular default ActivatedRoute reference
+   * @param userService UserService reference
+   * @param newMenuItemView MenuItemViewModel reference menu data
    */
   constructor(
     protected route: ActivatedRoute,
     protected userService: UserService,
-    private _menuItemView: MenuItemViewModel
+    private newMenuItemView: MenuItemViewModel
   ) {
     this.debtId = this.route.snapshot.paramMap.get('id');
-    this.menuItemView = _menuItemView;
+    this.menuItemView = newMenuItemView;
   }
 
   /**

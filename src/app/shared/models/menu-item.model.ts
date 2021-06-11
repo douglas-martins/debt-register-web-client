@@ -1,5 +1,5 @@
-import {BaseData} from "../base/base-data";
-import {MenuItemViewModel} from "./menu-item-view.model";
+import {BaseData} from '../base/base-data';
+import {MenuItemViewModel} from './menu-item-view.model';
 
 /**
  * Interface for map the menu item object in system

@@ -2,21 +2,21 @@ import {Inject, Injectable} from '@angular/core';
 import {BaseHttp} from './base-http';
 import {BaseMock} from './base-mock';
 import {Observable} from 'rxjs';
-import {BaseData} from "./base-data";
-import {environment} from "../../../environments/environment";
+import {BaseData} from './base-data';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService<T extends BaseData> {
-  /** Ref for the mock for testing **/
+  /** Ref for the mock for testing */
   private mock: BaseMock<T>;
 
-  /** Ref for the url service for the API request **/
+  /** Ref for the url service for the API request */
   protected url: string;
 
-  /** Ref for the service endpoint **/
+  /** Ref for the service endpoint */
   protected endpoint: string;
 
   /** Ref for the custom final part of endpoint */
@@ -24,17 +24,17 @@ export class BaseService<T extends BaseData> {
 
   /**
    * Default class constructor.
-   * @param http:
-   * @param _endpoint
+   * @param http BaseHttp class reference
+   * @param newEndpoint string value for the endpoint on this service
    */
   constructor(
     protected http: BaseHttp<T>,
-    @Inject(String) private _endpoint: string
+    @Inject(String) private newEndpoint: string
   ) {
-    this.url = _endpoint.length === 0 ? environment.userUrl : environment.apiUrl;
+    this.url = newEndpoint.length === 0 ? environment.userUrl : environment.apiUrl;
     this.mock = null;
     this.customEndpoint = '';
-    this.endpoint = _endpoint.length === 0 ? 'users' : _endpoint;
+    this.endpoint = newEndpoint.length === 0 ? 'users' : newEndpoint;
   }
 
   /**
@@ -44,7 +44,7 @@ export class BaseService<T extends BaseData> {
   set setCustomEndpoint(customEndpoint: string) {
     this.customEndpoint = customEndpoint;
 
-    this.endpoint = this._endpoint;
+    this.endpoint = this.newEndpoint;
 
     if (this.customEndpoint) {
       this.endpoint = this.endpoint + '/' + this.customEndpoint;

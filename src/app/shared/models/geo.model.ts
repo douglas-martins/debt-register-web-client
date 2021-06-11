@@ -1,4 +1,4 @@
-import {BaseData} from "../base/base-data";
+import {BaseData} from '../base/base-data';
 
 /**
  * Interface for map the geolocation object in system

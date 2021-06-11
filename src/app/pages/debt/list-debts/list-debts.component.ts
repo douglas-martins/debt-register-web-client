@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {DebtCommons} from "../debt-commons/debt-commons";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../../shared/services/user.service";
-import {MenuItemViewModel} from "../../../shared/models/menu-item-view.model";
-import {DebtModel} from "../../../shared/models/debt.model";
-import {DebtService} from "../../../shared/services/debt.service";
-import {ToastrService} from "ngx-toastr";
-import {UserModel} from "../../../shared/models/user.model";
+import {DebtCommons} from '../debt-commons/debt-commons';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../../shared/services/user.service';
+import {MenuItemViewModel} from '../../../shared/models/menu-item-view.model';
+import {DebtModel} from '../../../shared/models/debt.model';
+import {DebtService} from '../../../shared/services/debt.service';
+import {ToastrService} from 'ngx-toastr';
+import {UserModel} from '../../../shared/models/user.model';
 
 @Component({
   selector: 'app-list-debts',
@@ -26,11 +26,11 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
 
   /**
    * Default class constructor.
-   * @param route
-   * @param userService
-   * @param debtService
-   * @param router
-   * @param toastrService
+   * @param route angular default ActivatedRoute reference
+   * @param userService UserService reference
+   * @param debtService DebtService reference
+   * @param router angular default Router reference
+   * @param toastrService service reference from the lib ngx-toastr
    */
   constructor(
     protected route: ActivatedRoute,
@@ -40,9 +40,9 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
     private toastrService: ToastrService
   ) {
     super(route, userService, new class implements MenuItemViewModel {
-      description: string = 'List all Debt data from a user';
-      icon: string = '';
-      title: string = 'Debts';
+      description = 'List all Debt data from a user';
+      icon = '';
+      title = 'Debts';
     });
   }
 
@@ -70,7 +70,7 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
    * @param debt: DebtModel
    */
   public editDebt(debt: DebtModel): void {
-    this.router.navigateByUrl('debt/' + debt._id, {state: {debt: debt}});
+    this.router.navigateByUrl('debt/' + debt._id, {state: {debt}});
   }
 
   /**
@@ -85,11 +85,17 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
         this.debts = data;
       }).catch((error) => {
         console.log(error);
-        this.toastrService.error('The application has a problem to list data. Please contact the support or try again.' ,'Error On List Data', {timeOut: 3000});
+        this.toastrService.error(
+          'The application has a problem to list data. Please contact the support or try again.' ,
+          'Error On List Data',
+          {timeOut: 3000});
       });
     }).catch((error) => {
       console.log(error);
-      this.toastrService.error('The application has a problem to delete data. Please contact the support or try again.' ,'Error On Delete', {timeOut: 3000});
+      this.toastrService.error(
+        'The application has a problem to delete data. Please contact the support or try again.' ,
+        'Error On Delete',
+        {timeOut: 3000});
     });
   }
 
@@ -98,7 +104,7 @@ export class ListDebtsComponent extends DebtCommons implements OnInit {
    * @param user: UserModel | number
    */
   public getUserDebts(user: UserModel | number): void {
-    const id: number = typeof user === "number" ? user : user.id;
+    const id: number = typeof user === 'number' ? user : user.id;
     this.debtService.setCustomEndpoint = 'all';
     this.debtService.find(id).toPromise().then((data) => {
       this.debts = data;
