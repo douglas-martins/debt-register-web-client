@@ -44,5 +44,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+---
 ## Application flow 
-![alt text](https://github.com/douglas-martins/debt-register-web-client/blob/master/fluxograma.jpeg?raw=true)
+![alt text](https://github.com/douglas-martins/debt-register-app/blob/master/fluxograma.jpeg?raw=true)
